@@ -304,17 +304,6 @@ template {
   content: "";
   clear: both; }
 
-* {
-  margin: 0;
-  padding: 0; }
-
-ul {
-  list-style: none; }
-
-a {
-  color: white;
-  text-decoration: none; }
-
 .clearfix:after {
   display: block;
   content: "";
@@ -326,7 +315,6 @@ body {
 .fill {
   background-image: url("../img/download.jpg");
   background-size: cover;
-  position: relative;
   height: 150px;
   width: 150px;
   top: 5px;
@@ -334,15 +322,19 @@ body {
   cursor: pointer; }
 
 .hold {
-  border: solid 5px #ccc; }
+  background-color: antiquewhite; }
 
 .empty {
-  display: inline-block;
-  height: 160px;
-  width: 160px;
-  margin: 10px;
-  border: solid 3px salmon;
-  background: white; }
+  float: left;
+  height: 200px;
+  width: 200px;
+  background: beige;
+  border: 1px solid 	#eedfcc;
+  margin: 0; }
+
+#container {
+  height: 606px;
+  width: 606px; }
 
 .hovered {
   background: #f4f4f4;
