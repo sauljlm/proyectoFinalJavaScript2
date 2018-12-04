@@ -1,43 +1,36 @@
-const fill = document.querySelector('.fill');
+const fills = document.querySelectorAll('.fill');
 const empties = document.querySelectorAll('.empty');
-
+let counter = 0;
+let num;
 // Fill listeners
-fill.addEventListener('dragstart', dragStart);
-fill.addEventListener('dragend', dragEnd);
-
+for (const fill of fills) {
+  fill.setAttribute('data', counter);
+  fill.addEventListener('dragstart', () => {
+    fill.className += ' hold';
+    // console.log(fill);
+    num = fill.getAttribute('data')
+    setTimeout(() => (fill.className = 'invisible'), 0);
+  });
+  fill.addEventListener('dragend', () => {
+    fill.className = 'fill';
+  });
+  counter++;
+}
 // Loop through empty boxes and add listeners
 for (const empty of empties) {
-  empty.addEventListener('dragover', dragOver);
-  empty.addEventListener('dragenter', dragEnter);
-  empty.addEventListener('dragleave', dragLeave);
-  empty.addEventListener('drop', dragDrop);
-}
-
-// Drag Functions
-
-function dragStart() { // empezar a mover la imagen
-  fill.className += ' hold';
-  setTimeout(() => (fill.className = 'invisible'), 0);
-}
-
-function dragEnd() { // terminar de mover la imagen
-  fill.className = 'fill';
-}
-
-function dragOver(e) {
-  e.preventDefault();
-}
-
-function dragEnter(e) {
-  e.preventDefault();
-  this.className += ' hovered';
-}
-
-function dragLeave() {
-  this.className = 'empty';
-}
-
-function dragDrop() {
-  this.className = 'empty';
-  this.append(fill);
+  empty.addEventListener('dragover', (e) => {
+    e.preventDefault();
+  });
+  empty.addEventListener('dragenter', (e) => {
+    e.preventDefault();
+    empty.className += ' hovered';
+  });
+  empty.addEventListener('dragleave', () => {
+    empty.className = 'empty';
+  });
+  empty.addEventListener('drop', () => {
+    empty.className = 'empty';
+    empty.append(fills[num]);
+    // console.log(fills.indexOf(fills[0]));
+  });
 }
