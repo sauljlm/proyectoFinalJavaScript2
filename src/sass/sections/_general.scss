@@ -1,15 +1,15 @@
-
+.container{
+  display: inline-block;
+  padding: 2%;
+  height: 480px;
+  width: 480px;
+}
 .clearfix:after {
   display: block;
   content: "";
   clear: both; }
 
-body {
-  background: darksalmon; }
-
 .fill {
-  background-image: url("../img/download.jpg");
-  background-size: cover;
   height: 150px;
   width: 150px;
   top: 5px;
@@ -19,19 +19,28 @@ body {
 .hold {
   background-color: antiquewhite;
 }
-
+#container{
+  padding: 10%;
+}
 .empty {
   float: left;
-  height: 200px;
-  width: 200px; 
+  height: 150px;
+  width: 150px;
   background: beige;
   border: 1px solid 	#eedfcc;
   margin: 0;
 }
-#container {
-  height: 606px;
-  width: 606px;
-}
 .hovered {
   background: #f4f4f4;
   border-style: dashed; }
+img{
+  width: 150px;
+}
+.clearfix:after{
+  display: block;
+  content: "";
+  clear: both;
+}
+#container{
+  display: none;
+}
