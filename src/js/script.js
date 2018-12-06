@@ -5,7 +5,8 @@ const loarding = document.getElementById('loarding');
 const container = document.getElementById('container');
 const fills = document.querySelectorAll('.fill');
 const empties = document.querySelectorAll('.empty');
-const order = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+const completes = document.querySelectorAll('.complete');
+const order = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let orderIncomplete = [];
 let counter = 0;
 let num;
@@ -24,12 +25,12 @@ function runGame() {
       fill.className += ' hold';
       // console.log(fill);
       num = fill.getAttribute('data');
+      // console.log(orderIncomplete);
       setTimeout(() => (fill.className = 'invisible'), 0); // eslint-disable-line
     });
     fill.addEventListener('dragend', () => {
       fill.className = 'fill';
     });
-    orderIncomplete.push(counter);
     counter++;
   }
   // Loop through empty boxes and add listeners
@@ -74,14 +75,18 @@ function runGame() {
       complete += 1;
     }
     if (complete >= 9) {
+      for (const complete of completes) {
+        let id = complete.getAttribute('id');
+        orderIncomplete.push(id);
+        console.log(orderIncomplete);
+        console.log(order);
+      }
       for (let i = 0; i < 9; i++) {
         if (orderIncomplete[i] === order[i]) {
           right += 1;
           console.log("right");
         }
       }
-      console.log(order);
-      console.log(orderIncomplete);
       if (right === 9) {
         finished === true;
         console.log('ganaste');
