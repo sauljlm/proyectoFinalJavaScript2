@@ -305,12 +305,18 @@ template {
   content: "";
   clear: both; }
 
+#container {
+  text-align: center; }
+
 .container {
   display: inline-block;
   padding: 2%;
-  height: 480px;
-  width: 480px;
-  margin-left: 10%; }
+  margin-top: 5%;
+  height: 456px;
+  width: 456px; }
+
+#build {
+  margin-left: 5%; }
 
 .clearfix:after {
   display: block;
@@ -376,6 +382,79 @@ p {
   margin-top: -5px;
   margin-bottom: 10px; }
 
+#drag_icon {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  margin: auto; }
+
+#hand {
+  animation: moveHand 1.2s ease-in-out infinite; }
+
+@keyframes moveHand {
+  from {
+    transform: translateX(-20px);
+    opacity: 0.25; }
+  to {
+    transform: translateX(10px);
+    opacity: 1; } }
+.arrow {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  margin-left: -16px; }
+
+.bounce {
+  -webkit-animation-name: bounce;
+  -moz-animation-name: bounce;
+  -o-animation-name: bounce;
+  animation-name: bounce; }
+
+.animated {
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -ms-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  -ms-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  animation-duration: 2s; }
+
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0); }
+  40% {
+    -webkit-transform: translateY(-30px); }
+  60% {
+    -webkit-transform: translateY(-15px); } }
+@-moz-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0); }
+  40% {
+    -moz-transform: translateY(-30px); }
+  60% {
+    -moz-transform: translateY(-15px); } }
+@-o-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -o-transform: translateY(0); }
+  40% {
+    -o-transform: translateY(-30px); }
+  60% {
+    -o-transform: translateY(-15px); } }
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0); }
+  40% {
+    transform: translateY(-30px); }
+  60% {
+    transform: translateY(-15px); } }
 .load {
   position: absolute;
   top: 50%;
@@ -414,5 +493,103 @@ p {
     transform: translate(160%, 160%); }
   75% {
     transform: translate(0, 160%); } }
+body {
+  font-family: 'Open Sans', sans-serif; }
+
+.contenedor {
+  width: 90%;
+  max-width: 1000px;
+  margin: 20px auto; }
+
+/* ------------------------- */
+/* POPUP */
+/* ------------------------- */
+.overlay {
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  visibility: hidden; }
+
+.overlay.active {
+  visibility: visible; }
+
+.popup {
+  background: #F8F8F8;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 20px;
+  text-align: center;
+  width: 600px;
+  transition: .3s ease all;
+  transform: scale(0.7);
+  opacity: 0;
+  padding: 3%; }
+  .popup p {
+    text-transform: uppercase;
+    font-size: 4rem;
+    padding-bottom: 5%;
+    color: #000; }
+
+#btn-cerrar-popup {
+  font-size: 25px;
+  line-height: 16px;
+  display: block;
+  text-align: right;
+  transition: .3s ease all;
+  color: #000; }
+
+#reload {
+  padding: 20px 20px;
+  border-radius: 5%;
+  background-color: #A8A897;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0px;
+  margin-bottom: 10%;
+  cursor: pointer; }
+
+#reload:active {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0px inset; }
+
+/* ------------------------- */
+/* ANIMACIONES */
+/* ------------------------- */
+.popup.active {
+  transform: scale(1);
+  opacity: 1; }
+
+.popup.active h3 {
+  animation: entradaTitulo .8s ease .5s forwards; }
+
+.popup.active h4 {
+  animation: entradaSubtitulo .8s ease .5s forwards; }
+
+.popup.active .contenedor-inputs {
+  animation: entradaInputs 1s linear 1s forwards; }
+
+@keyframes entradaTitulo {
+  from {
+    opacity: 0;
+    transform: translateY(-25px); }
+  to {
+    transform: translateY(0);
+    opacity: 1; } }
+@keyframes entradaSubtitulo {
+  from {
+    opacity: 0;
+    transform: translateY(25px); }
+  to {
+    transform: translateY(0);
+    opacity: 1; } }
+@keyframes entradaInputs {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 
 /*# sourceMappingURL=styles.css.map */
