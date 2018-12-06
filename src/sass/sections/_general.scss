@@ -3,6 +3,7 @@
   padding: 2%;
   height: 480px;
   width: 480px;
+  margin-left: 10%;
 }
 .clearfix:after {
   display: block;
@@ -19,14 +20,10 @@
 .hold {
   background-color: antiquewhite;
 }
-#container{
-  padding: 10%;
-}
 .empty {
   float: left;
   height: 150px;
   width: 150px;
-  background: beige;
   border: 1px solid 	#eedfcc;
   margin: 0;
 }
@@ -43,4 +40,32 @@ img{
 }
 #container{
   display: none;
+}
+@import url('https://fonts.googleapis.com/css?family=Unlock');
+h1 {
+  font-family: 'Unlock', cursive;
+  text-align: center;
+  margin-top: 40px;
+  color: #A097A8;
+  font-size: 5em;
+}
+p {
+  text-align: center;
+  font-family: 'Unlock', cursive;
+  color: #A8A897;
+}
+.background-fill {
+  background-color: #EAEAEA;
+}
+.background-empty {
+  background-color: #FFFED6;
+}
+#encabezado {
+  position: absolute;
+  margin: 0;
+  margin-top: -20px;
+}
+#subtittle {
+  margin-top: -5px;
+  margin-bottom: 10px;
 }
