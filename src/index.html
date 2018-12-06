@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Proyecto Final JavaScript 2</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Unlock" rel="stylesheet">
 </head>
 <body>
 
@@ -13,10 +14,11 @@
       <div class="circle circle3"></div>
       <div class="circle circle4"></div>
   </div>
-
+  <h1 id="tittle">Rompecabezas</h1>
+  <p id="subtittle">resuelvelo!!! arrastra y suelta con el mouse</p>
   <div id="container">
-    <div class="container clearfix" id="containerStart">
-        <div class="empty">
+    <div class="container clearfix background-fill" id="containerStart">
+        <!--<div class="empty">
             <div class="fill" id="1" draggable="true"><img src="img/puzzle1/600x600a1.jpg"></div>
           </div>
 
@@ -50,10 +52,12 @@
 
           <div class="empty">
             <div class="fill" id="9" draggable="true"><img src="img/puzzle1/600x600a9.jpg"></div>
-          </div>
+          </div>-->
     </div>
-    <div class="container clearfix" id="build">
+    <div class="container clearfix  background-empty" id="build">
+      <p id="encabezado">Suelta las piezas aqui <span title=" &amp;#8681; ">⇩</span></p>
         <div class="empty">
+          
           </div>
 
           <div class="empty">
@@ -85,5 +89,6 @@
 
 
   <script src="js/script.js"></script>
+  <script src="js/change.js"></script>
 </body>
 </html>
