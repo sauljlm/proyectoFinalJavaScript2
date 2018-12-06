@@ -5,32 +5,36 @@ const loarding = document.getElementById('loarding');
 const container = document.getElementById('container');
 const fills = document.querySelectorAll('.fill');
 const empties = document.querySelectorAll('.empty');
-const order = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-let orderIncomplete = [];
+const order = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const orderIncomplete = [];
 let counter = 0;
 let num;
-let complete = 0;
+let moves = 0;
 let right = 0;
 let finished;
+let resoult;
+// variables pop up
+const overlay = document.getElementById('overlay');
+const popup = document.getElementById('popup');
+const btnCerrarPopup = document.getElementById('btn-cerrar-popup');
+const btnreload = document.getElementById('reload');
 
 // /////////////////////
 // function rungame/////
 // /////////////////////
-function runGame() {
+function dragAndDrop() {
   // Fill listeners
   for (const fill of fills) {
     fill.setAttribute('data', counter);
     fill.addEventListener('dragstart', () => { // eslint-disable-line
       fill.className += ' hold';
-      // console.log(fill);
       num = fill.getAttribute('data');
       setTimeout(() => (fill.className = 'invisible'), 0); // eslint-disable-line
     });
     fill.addEventListener('dragend', () => {
       fill.className = 'fill';
     });
-    orderIncomplete.push(counter);
-    counter++;
+    counter += 1;
   }
   // Loop through empty boxes and add listeners
   for (const empty of empties) {
@@ -47,49 +51,74 @@ function runGame() {
     empty.addEventListener('drop', () => { // eslint-disable-line
       empty.className = 'empty';
       empty.append(fills[num]);
-      // console.log(fills.indexOf(fills[0]));
-
-      // puzzle review
-      check();
-      // console.log('num');
+      // ///////////////
+      // puzzle review//
+      // ///////////////
+      moves += 1;
+      check(); // eslint-disable-line
     });
   }
+
   // /////////////
   // SHOW RESULT//
   // /////////////
-  function showResult(finished) {
+  function showResoult() {
     if (finished === true) {
-      // console.log('ganaste');
+      resoult = 'ganaste';
+    } else {
+      resoult = 'perdiste';
     }
-    else {
-      // console.log('perdiste');
-    }
+    const p = document.createElement('p');
+    p.innerHTML = resoult;
+
+    const a = document.getElementsByTagName('a')[1];
+    popup.insertBefore(p, a);
   }
+  // ////////////
+  // open popUp//
+  // ////////////
+  function openPopUp() {
+    // show pop up
+    overlay.classList.add('active');
+    popup.classList.add('active');
+    // clouse pop up
+    btnCerrarPopup.addEventListener('click', function (e) {
+      e.preventDefault();
+      overlay.classList.remove('active');
+      popup.classList.remove('active');
+    });
+    showResoult();
+  }
+
   // ///////////////////////
   // verification function//
   // ///////////////////////
   function check() {
-    if (complete < 9) {
-    // orderIncomplete.push(counter);
-      complete += 1;
-    }
-    if (complete >= 9) {
-      for (let i = 0; i < 9; i++) {
-        if (orderIncomplete[i] === order[i]) {
-          right += 1;
-          console.log("right");
-        }
+    if (moves >= 9) {
+      const completes = document.querySelectorAll('.complete');
+      for (const complete of completes) {
+        let id = complete.getAttribute('id');
+        id = parseInt(id);  // eslint-disable-line
+        orderIncomplete.push(id);
+        // console.log(orderIncomplete);
+        // console.log(order);
+        // console.log(id);
       }
+      // console.log(completes);
       console.log(order);
       console.log(orderIncomplete);
-      if (right === 9) {
-        finished === true;
-        console.log('ganaste');
-      } else {
-        finished === false;
-        console.log('perdiste');
+      for (let i = 1; i <= 9; i += 1) {
+        if (orderIncomplete[i] === order[i]) {
+          right += 1;
+          console.log(right);
+        }
       }
-      showResult(finished);
+      if (right === 9) {
+        finished = true;
+      } else {
+        finished = false;
+      }
+      openPopUp();
     }
   }
 }
@@ -99,9 +128,15 @@ function runGame() {
 function loard() {
   loarding.style.display = 'none';
   container.style.display = 'block';
-  runGame();
+  dragAndDrop();
 }
 // /////////////////////
 // function setTimeout//
 // /////////////////////
 window.setTimeout(loard, 2000);
+// /////////////////
+// function reload//
+// /////////////////
+btnreload.addEventListener('click', () => {
+  location.reload(true);
+});
