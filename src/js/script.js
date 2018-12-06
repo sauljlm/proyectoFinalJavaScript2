@@ -105,12 +105,12 @@ function dragAndDrop() {
         // console.log(id);
       }
       // console.log(completes);
-      console.log(order);
-      console.log(orderIncomplete);
+      // console.log(order);
+      // console.log(orderIncomplete);
       for (let i = 1; i <= 9; i += 1) {
         if (orderIncomplete[i] === order[i]) {
           right += 1;
-          console.log(right);
+          // console.log(right);
         }
       }
       if (right === 9) {
@@ -138,5 +138,5 @@ window.setTimeout(loard, 2000);
 // function reload//
 // /////////////////
 btnreload.addEventListener('click', () => {
-  location.reload(true);
+  location.reload(true); // eslint-disable-line
 });
